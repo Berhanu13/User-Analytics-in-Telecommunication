@@ -25,9 +25,9 @@ def close_connection(conn):
     """Close the database connection."""
     conn.close()
 
-def get_dataframe():
+def get_dataframe(table_name):
     """Main function to get the DataFrame."""
-    # Replace these with your actual database connection details
+    
     db_params = {
         'dbname': 'week-1',
         'user': 'postgres',
