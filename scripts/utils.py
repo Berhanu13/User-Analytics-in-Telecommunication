@@ -1,34 +1,55 @@
-import imp
+import logging
+from typing import Optional, Dict, Union
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# Setting up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 class Utils:
+    @staticmethod
+    def log_decorator(func):
+        def wrapper(*args, **kwargs):
+            try:
+                result = func(*args, **kwargs)
+                logger.info(f"{func.__name__} executed successfully.")
+                return result
+            except Exception as e:
+                logger.error(f"Error in {func.__name__}: {str(e)}")
+                raise
+        return wrapper
 
-    def load_data(self, data_path: str,dtype:dict=None) -> pd.DataFrame:
+    @log_decorator
+    def load_data(self, data_path: str, dtype: Optional[Dict[str, Union[str, int, float]]] = None) -> pd.DataFrame:
         """
         Load data from a csv file.
         """
         try:
-            df = pd.read_csv(data_path,dtype=dtype)
+            df = pd.read_csv(data_path, dtype=dtype)
         except FileNotFoundError:
-            print("File not found.")
+            logger.error("File not found.")
+            raise
         return df
 
-    def save_data(self, df: pd.DataFrame, data_path:str,index:bool = False) -> None:
+    @log_decorator
+    def save_data(self, df: pd.DataFrame, data_path: str, index: bool = False) -> None:
         """
         Save data to a csv file.
         """
         try:
-            df.to_csv(data_path,index=index)
-            print("Data saved successfully!")
+            df.to_csv(data_path, index=index)
+            logger.info("Data saved successfully!")
         except Exception as e:
-            print(f"Saving failed {e}")
+            logger.error(f"Saving failed: {str(e)}")
+            raise
     
         # Function to calculate missing values by column
-    def missing_values_table(self,df):
+    @log_decorator
+    def missing_values_table(self, df: pd.DataFrame) -> pd.DataFrame:
         # Total missing values
         mis_val = df.isnull().sum()
 
@@ -58,7 +79,8 @@ class Utils:
         # Return the dataframe with missing information
         return mis_val_table_ren_columns
 
-    def format_float(self,value):
+    @staticmethod
+    def format_float(value: float) -> str:
         return f'{value:,.2f}'
 
     def find_agg(self,df:pd.DataFrame, agg_column:str, agg_metric:str, col_name:str, top:int, order=False )->pd.DataFrame:
@@ -112,9 +134,10 @@ class Utils:
         plt.ylabel(ylabel, fontsize=16)
         plt.show()
 
-    def plot_heatmap(self,df:pd.DataFrame, title:str, cbar=False)->None:
+    @log_decorator
+    def plot_heatmap(self, df: pd.DataFrame, title: str, cbar: bool = False) -> None:
         plt.figure(figsize=(12, 7))
-        sns.heatmap(df, annot=True, cmap='viridis', vmin=0, vmax=1, fmt='.2f', linewidths=.7, cbar=cbar )
+        sns.heatmap(df, annot=True, cmap='viridis', vmin=0, vmax=1, fmt='.2f', linewidths=.7, cbar=cbar)
         plt.title(title, size=18, fontweight='bold')
         plt.show()
 
@@ -133,10 +156,11 @@ class Utils:
         plt.yticks( fontsize=14)
         plt.show()
 
-    def plot_scatter(self,df: pd.DataFrame, x_col: str, y_col: str, title: str, hue: str, style: str) -> None:
+    @log_decorator
+    def plot_scatter(self, df: pd.DataFrame, x_col: str, y_col: str, title: str, hue: str, style: str) -> None:
         plt.figure(figsize=(12, 7))
-        sns.scatterplot(data = df, x=x_col, y=y_col, hue=hue, style=style)
+        sns.scatterplot(data=df, x=x_col, y=y_col, hue=hue, style=style)
         plt.title(title, size=20)
         plt.xticks(fontsize=14)
-        plt.yticks( fontsize=14)
+        plt.yticks(fontsize=14)
         plt.show()
