@@ -111,11 +111,24 @@ class Utils:
         
         return df[bytes_data]
 
-    def plot_hist(self,df:pd.DataFrame, column:str, color:str)->None:
+    def plot_hist(self, df: pd.DataFrame, column: str, color: str) -> None:
+        """
+        Plot a histogram with kernel density estimate for the specified column in the DataFrame.
+
+        Parameters:
+        - df (pd.DataFrame): The DataFrame containing the data.
+        - column (str): The column for which the histogram is to be plotted.
+        - color (str): The color of the histogram.
+
+        Returns:
+        - None
+        """
         plt.figure(figsize=(12, 7))
-        # fig, ax = plt.subplots(1, figsize=(12, 7))
         sns.histplot(data=df, x=column, color=color, kde=True)
         plt.title(f'Distribution of {column}', size=20, fontweight='bold')
+        plt.xlabel(column.capitalize())  # Add x-axis label
+        plt.ylabel('Frequency')  # Add y-axis label
+        plt.grid(axis='y', linestyle='--', alpha=0.7)  # Add grid for better readability
         plt.show()
 
     def plot_count(self,df:pd.DataFrame, column:str) -> None:
