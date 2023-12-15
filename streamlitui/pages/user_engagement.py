@@ -6,10 +6,10 @@ import matplotlib.pyplot as plt
 
 cwd = os.getcwd()
 
-# @st.experimental_memo
+@st.experimental_memo
 def load_data(DATA_URL):
     
-    data = pickle.load(open(DATA_URL, "rb"))
+    data = pickle.read_pickle(open(DATA_URL, "rb"))
     return data
 
 st.set_page_config(page_title="User Engagement Analysis", page_icon="👤", layout="wide")
