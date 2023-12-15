@@ -7,12 +7,13 @@ import matplotlib.pyplot as plt
 
 cwd = os.getcwd()
 
-@st.experimental_memo
+@st.cache_data
 def load_data(DATA_URL):
     
     data = pickle.load(open(DATA_URL, "rb"))
     return data
 
+st.set_page_config(page_title="User Satisfaction Analysis", page_icon="👤", layout="wide")
 
 
 def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, ylabel: str, filename: str = "plot.png") -> plt.Figure:
@@ -47,7 +48,6 @@ The data below illustrates top 10 satisfied customers with their score values"""
 top_10_satisfied = data['top_10_satisfied'] 
 
 
-
 st.markdown("### Top 10 tcp values")
 st.markdown("#")
 st.table(top_10_satisfied)
@@ -64,6 +64,5 @@ plt.xlabel('Users')
 plt.xticks(ticks=[''])
 plt.ylabel('Satisfaction Score') 
 plt.title('Top 10 Satisfied Customers')
-plt.savefig('line_plot.png', bbox_inches='tight')
-st.image('line_plot.png')
-
+plt.savefig('images/line_plot.png', bbox_inches='tight')
+st.image('images/line_plot.png')
