@@ -51,13 +51,12 @@ st.pyplot(fig=fig)
 
 st.markdown("the difference can't be clearly seen from the bar graph so it is better to visualize it with line graph")
 
-fig=plt.figure(figsize=(12, 7))
-plt.plot(top_10_satisfied['msisdn'],top_10_satisfied['satisfaction_score'],'bx-')
+fig = plt.figure(figsize=(12, 7))
+plt.plot(top_10_satisfied['msisdn'], top_10_satisfied['satisfaction_score'], 'bx-')
 plt.xlabel('Users') 
 plt.xticks(ticks=[''])
-plt.ylabel('Satisfiction score') 
-plt.title('Top 10 Satisfied customers')
-plt.show()
-
-st.pyplot(fig=fig)
+plt.ylabel('Satisfaction Score') 
+plt.title('Top 10 Satisfied Customers')
+plt.savefig('line_plot.png', bbox_inches='tight')
+st.image('line_plot.png')
 
