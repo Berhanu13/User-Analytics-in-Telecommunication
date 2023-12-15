@@ -13,16 +13,18 @@ def load_data(DATA_URL):
     data = pickle.load(open(DATA_URL, "rb"))
     return data
 
-def plot_bar(df:pd.DataFrame, x_col:str, y_col:str, title:str, xlabel:str, ylabel:str)->None:
-        fig=plt.figure(figsize=(12, 7))
-        sns.barplot(data = df, x=x_col, y=y_col)
-        plt.title(title, size=20)
-        plt.xticks(rotation=75, fontsize=14)
-        plt.yticks( fontsize=14)
-        plt.xlabel(xlabel, fontsize=16)
-        plt.ylabel(ylabel, fontsize=16)
-        plt.show()
-        return fig
+
+
+def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, ylabel: str) -> None:
+    fig = plt.figure(figsize=(12, 7))
+    sns.barplot(data=df, x=x_col, y=y_col)
+    plt.title(title, size=20)
+    plt.xticks(rotation=75, fontsize=14)
+    plt.yticks(fontsize=14)
+    plt.xlabel(xlabel, fontsize=16)
+    plt.ylabel(ylabel, fontsize=16)
+    plt.show()
+    plt.close(fig)
 
 
 st.set_page_config(page_title="User Engagement Analysis", page_icon="👤", layout="wide")
