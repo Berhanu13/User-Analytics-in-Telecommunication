@@ -1,5 +1,5 @@
 matplotlib
-pandas==2.0
+pandas
 seaborn
 altair==4.0
 plotly
