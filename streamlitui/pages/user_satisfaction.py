@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 cwd = os.getcwd()
 
-@st.cache_data
+@st.experimental_memo
 def load_data(DATA_URL):
     
     data = pickle.load(open(DATA_URL, "rb"))
