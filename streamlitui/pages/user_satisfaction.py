@@ -36,7 +36,7 @@ def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, 
 
 
 
-st.set_page_config(page_title="User Engagement Analysis", page_icon="👤", layout="wide")
+
 
 # st.sidebar.header("Please select the desired page")
 data = load_data(f"{cwd}/data/satisfaction_data.pkl")
