@@ -4,7 +4,7 @@ seaborn
 altair==4.0
 plotly
 scikit-learn
-psycopg2
+psycopg2-binary
 sqlalchemy
 streamlit
 kneed
