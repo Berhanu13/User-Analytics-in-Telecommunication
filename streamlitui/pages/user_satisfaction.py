@@ -15,15 +15,15 @@ def load_data(DATA_URL):
 
 
 
-def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, ylabel: str) -> None:
-    fig = plt.figure(figsize=(12, 7))
-    sns.barplot(data=df, x=x_col, y=y_col)
-    plt.title(title, size=20)
-    plt.xticks(rotation=75, fontsize=14)
-    plt.yticks(fontsize=14)
-    plt.xlabel(xlabel, fontsize=16)
-    plt.ylabel(ylabel, fontsize=16)
-    plt.show()
+def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, ylabel: str, filename: str = "plot.png") -> None:
+    fig, ax = plt.subplots(figsize=(12, 7))
+    sns.barplot(data=df, x=x_col, y=y_col, ax=ax)
+    ax.set_title(title, size=20)
+    ax.set_xticklabels(ax.get_xticklabels(), rotation=75, fontsize=14)
+    ax.tick_params(axis='y', labelsize=14)
+    ax.set_xlabel(xlabel, fontsize=16)
+    ax.set_ylabel(ylabel, fontsize=16)
+    fig.savefig(filename, bbox_inches='tight')
     plt.close(fig)
 
 
