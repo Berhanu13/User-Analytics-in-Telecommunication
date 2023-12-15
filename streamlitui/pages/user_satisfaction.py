@@ -5,15 +5,16 @@ import seaborn as sns
 import pickle
 import matplotlib.pyplot as plt
 
+st.set_page_config(page_title="User Satisfaction Analysis", page_icon="👤", layout="wide")
 cwd = os.getcwd()
 
-@st.cache_data
+@st.experimental_memo
 def load_data(DATA_URL):
     
     data = pickle.load(open(DATA_URL, "rb"))
     return data
 
-st.set_page_config(page_title="User Satisfaction Analysis", page_icon="👤", layout="wide")
+
 
 
 def plot_bar(df: pd.DataFrame, x_col: str, y_col: str, title: str, xlabel: str, ylabel: str, filename: str = "plot.png") -> plt.Figure:
