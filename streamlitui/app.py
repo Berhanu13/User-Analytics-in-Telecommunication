@@ -2,7 +2,7 @@ import os
 import pandas as pd
 cwd = os.getcwd()
 # sys.path.append("./scripts")
-# sys.path.append("./dashboard")
+
 
 import streamlit as st
 
@@ -20,7 +20,7 @@ st.markdown("""
     - The features described can be found below
 """)
 
-df=pd.read_csv(f"{cwd}/dashboard/asset/st.csv")
+df=pd.read_csv(f"{cwd}/streamlitui/asset/st.csv")
 st.write(df)
 
 st.markdown("""
