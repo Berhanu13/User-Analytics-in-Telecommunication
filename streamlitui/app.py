@@ -12,7 +12,7 @@ st.set_page_config(page_title="Telecom Analytics", layout="wide")
 # st.sidebar.markdown("Please select the desired page")
 
 image_path = f"{cwd}/images/10acc.png"
-st.image(image_path, caption='10 Academy', use_column_width=True)
+st.image(image_path, caption='10 Academy', use_column_width=False)
 
 
 st.markdown("""
@@ -25,7 +25,7 @@ st.markdown("""
     > Workflow Diagram:        
             """)
 image_path2 = f"{cwd}/images/CRISP-DM.png"
-st.image(image_path2, caption='CRISP-DM', use_column_width=True)
+st.image(image_path2, caption='CRISP-DM', use_column_width=False)
 
 df=pd.read_csv(f"{cwd}/streamlitui/asset/st.csv")
 st.write(df)
