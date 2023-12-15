@@ -22,7 +22,7 @@ st.markdown("""
     ## Data
     > For this project, I used data from a monthly aggregation of xDR records. I obtained a data dump, which was then loaded into a Postgres database. The dataset comprises 55 columns and 15,001 rows.
 
-    > Workflow Diagram:        
+    ## Workflow Diagram:        
             """)
 image_path2 = f"{cwd}/images/CRISP-DM.png"
 st.image(image_path2, caption='CRISP-DM', use_column_width=False)
