@@ -1,19 +1,19 @@
 import os
 import pandas as pd
-cwd = os.getcwd()
-# sys.path.append("./scripts")
-
-
 import streamlit as st
 
+cwd = os.getcwd()
 
 st.set_page_config(page_title="Telecom Analytics", layout="wide")
 
-# st.sidebar.markdown("Please select the desired page")
-
+# Specify the image path
 image_path = f"{cwd}/images/10acc.png"
-st.image(image_path, caption='10 Academy', use_column_width=True)
 
+# Set the desired height for the image
+image_height = 200
+
+# Display the image within a Markdown block with specified height
+st.markdown(f"![10 Academy]({image_path}){{height={image_height}}}")
 
 st.markdown("""
 
@@ -23,7 +23,7 @@ st.markdown("""
     > For this project, I used data from a monthly aggregation of xDR records. I obtained a data dump, which was then loaded into a Postgres database. The dataset comprises 55 columns and 15,001 rows.
 """)
 
-df=pd.read_csv(f"{cwd}/streamlitui/asset/st.csv")
+df = pd.read_csv(f"{cwd}/streamlitui/asset/st.csv")
 st.write(df)
 
 st.markdown("""
