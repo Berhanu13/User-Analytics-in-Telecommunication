@@ -83,11 +83,11 @@ To install the `User-Analytics-in-Telecom-Industry` package, follow these steps:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/bkaggle/User-Analytics-in-Telecom-Industry.git
+    git clone https://github.com/Berhanu13/User-Analytics-in-Telecommunication.git
     ```
 2. Navigate to the project directory:
     ```bash
-    cd User-Analytics-in-Telecom-Industry
+    cd User-Analytics-in-Telecommunication
     ```
  
 3. Install the required dependencies:
@@ -96,7 +96,7 @@ To install the `User-Analytics-in-Telecom-Industry` package, follow these steps:
     ```
 4. Link to the deployed dashboard
    ```
-   https://user-analytics-in-telecom-industry-bqbdqbnxhbxwrp8pzeesjd.streamlit.app/
+   https://user-analytics-in-telecommunication-bqbdqbnxhbxwrp8pzeesjd.streamlit.app/
    ```
 Please be aware that the existing requirements.txt file includes only a limited set of packages at the moment, and it might not encompass all the necessary packages for your analysis. Make sure to supplement it with any additional packages you plan to install.
 
